@@ -2,13 +2,13 @@
   "ci": {
     "collect": {
       "url": [
-        "https://emma11y.github.io/tester-a11y/",
-        "https://emma11y.github.io/tester-a11y/les-contrastes",
-        "https://emma11y.github.io/tester-a11y/la-langue",
-        "https://emma11y.github.io/tester-a11y/les-images",
-        "https://emma11y.github.io/tester-a11y/les-formulaires",
-        "https://emma11y.github.io/tester-a11y/cas-pratique-5",
-        "https://emma11y.github.io/tester-a11y/cas-pratique-6"
+        "https://alexmacapple.github.io/tester-a11Y/",
+        "https://alexmacapple.github.io/tester-a11Y/les-contrastes",
+        "https://alexmacapple.github.io/tester-a11Y/la-langue",
+        "https://alexmacapple.github.io/tester-a11Y/les-images",
+        "https://alexmacapple.github.io/tester-a11Y/les-formulaires",
+        "https://alexmacapple.github.io/tester-a11Y/cas-pratique-5",
+        "https://alexmacapple.github.io/tester-a11Y/cas-pratique-6"
       ],
       "startServerCommand": "npm run dev",
       "settings": {

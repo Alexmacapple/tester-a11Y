@@ -1,4 +1,4 @@
-const absolutePath = '/tester-a11y';
+const absolutePath = '/tester-a11Y';
 const titlePage = `Démo accessibilité numérique`;
 
 window.onload = () => {

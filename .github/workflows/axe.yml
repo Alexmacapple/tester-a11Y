@@ -24,10 +24,10 @@ jobs:
 
       - name: Run axe
         run: |
-          axe https://emma11y.github.io/tester-a11y/
-          axe https://emma11y.github.io/tester-a11y/les-contrastes
-          axe https://emma11y.github.io/tester-a11y/la-langue
-          axe https://emma11y.github.io/tester-a11y/les-images
-          axe https://emma11y.github.io/tester-a11y/les-formulaires
-          axe https://emma11y.github.io/tester-a11y/cas-pratique-5
-          axe https://emma11y.github.io/tester-a11y/cas-pratique-6
+          axe https://alexmacapple.github.io/tester-a11Y/
+          axe https://alexmacapple.github.io/tester-a11Y/les-contrastes
+          axe https://alexmacapple.github.io/tester-a11Y/la-langue
+          axe https://alexmacapple.github.io/tester-a11Y/les-images
+          axe https://alexmacapple.github.io/tester-a11Y/les-formulaires
+          axe https://alexmacapple.github.io/tester-a11Y/cas-pratique-5
+          axe https://alexmacapple.github.io/tester-a11Y/cas-pratique-6
