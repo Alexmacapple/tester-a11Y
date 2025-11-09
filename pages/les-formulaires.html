@@ -21,7 +21,7 @@
     <div class="fr-grid-row fr-grid-row--center">
       <div class="fr-col-12 fr-col-md-10">
 
-        <!-- ========== TITRE + QUESTION ========== -->
+        <!-- ========== TITRE + INTRODUCTION ========== -->
         <h1>Testons les formulaires</h1>
 
         <div class="fr-callout fr-my-4w">
@@ -70,45 +70,47 @@
         <h2 class="fr-mt-6w">Expérimentez le problème</h2>
 
         <p>
-          Nous allons progressivement améliorer un formulaire en 4 étapes.
+          Nous allons comparer <strong>2 versions du même formulaire</strong> :
+          une version inaccessible qui accumule les mauvaises pratiques, et une version accessible
+          conforme aux standards DSFR et RGAA.
           <strong>Essayez de soumettre chaque version sans la remplir</strong> et observez
           comment les erreurs sont (ou ne sont pas) communiquées.
         </p>
 
-        <!-- VERSION 1 : UNIQUEMENT COULEUR -->
+        <!-- ========== VERSION 1 : FORMULAIRE INACCESSIBLE ========== -->
         <div class="form-version-demo fr-my-6w">
           <div class="version-header">
             <h3>
-              <span class="fr-badge fr-badge--error">Version 1 - Non conforme</span>
-              Erreurs indiquées uniquement par la couleur
+              <span class="fr-badge fr-badge--error">Formulaire inaccessible - Non conforme</span>
             </h3>
           </div>
 
           <div class="fr-callout fr-my-3w">
             <p class="fr-callout__text">
-              <strong>Voici un formulaire. J'envoie… rien ne se passe, sauf que certains champs passent au rouge.</strong><br>
-              ➜ Est-ce que c'est clair pour tout le monde ?
+              <strong>Ce formulaire accumule toutes les mauvaises pratiques :</strong><br>
+              Labels non associés, aucun message d'erreur, aucun attribut ARIA.
+              Les erreurs sont indiquées uniquement par une bordure rouge.
             </p>
           </div>
 
-          <form id="form-v1" class="fr-my-4w">
+          <form id="form-bad" class="fr-my-4w">
             <fieldset class="fr-fieldset">
               <legend class="fr-fieldset__legend">
                 Formulaire de contact
               </legend>
 
-              <!-- Champs SANS labels associés -->
+              <!-- MAUVAISES PRATIQUES : Labels SANS for, SANS ARIA, SANS indicateur * -->
               <div class="fr-fieldset__element">
                 <label class="fr-label">Nom</label>
-                <input class="fr-input" type="text" id="v1-nom" name="nom">
+                <input class="fr-input" type="text" id="bad-nom" name="nom">
               </div>
 
               <div class="fr-fieldset__element">
                 <label class="fr-label">Email</label>
-                <input class="fr-input" type="email" id="v1-email" name="email">
+                <input class="fr-input" type="email" id="bad-email" name="email">
               </div>
 
-              <button type="button" id="btnSubmitV1" class="fr-btn fr-btn--primary">
+              <button type="button" id="btnSubmitBad" class="fr-btn fr-btn--primary">
                 Envoyer
               </button>
             </fieldset>
@@ -132,256 +134,70 @@
           </details>
 
           <details class="fr-mt-2w">
-            <summary><strong>❌ Ce qui ne va pas ici</strong></summary>
+            <summary><strong>❌ Toutes les mauvaises pratiques</strong></summary>
             <div class="fr-callout fr-mt-2w">
               <ul class="fr-mb-0">
-                <li>Les labels ne sont pas associés aux champs (pas d'attribut <code>for</code>)</li>
-                <li>Aucune indication de champs obligatoires</li>
-                <li>Les erreurs sont indiquées uniquement par la couleur rouge</li>
-                <li>Aucun message d'erreur textuel</li>
-                <li>Aucun attribut ARIA (<code>aria-invalid</code>, <code>aria-describedby</code>)</li>
-                <li>Un lecteur d'écran ne vocalise ni le label, ni l'erreur</li>
+                <li>❌ Labels <strong>non associés</strong> aux champs (pas d'attribut <code>for</code>)</li>
+                <li>❌ <strong>Aucune indication</strong> de champs obligatoires (pas d'astérisque <code>*</code>)</li>
+                <li>❌ Erreurs indiquées <strong>uniquement par la couleur rouge</strong></li>
+                <li>❌ <strong>Aucun message d'erreur</strong> textuel</li>
+                <li>❌ <strong>Aucun attribut ARIA</strong> (<code>aria-invalid</code>, <code>aria-describedby</code>, <code>aria-required</code>)</li>
+                <li>❌ Un lecteur d'écran ne vocalise <strong>ni le label, ni l'erreur</strong></li>
+                <li>❌ Bouton générique <strong>"Envoyer"</strong> peu explicite</li>
               </ul>
             </div>
           </details>
         </div>
 
-        <!-- VERSION 2 : LABELS ASSOCIÉS -->
+        <!-- ========== VERSION 2 : FORMULAIRE ACCESSIBLE ========== -->
         <div class="form-version-demo fr-my-6w">
           <div class="version-header">
             <h3>
-              <span class="fr-badge fr-badge--warning">Version 2 - Partiellement conforme</span>
-              Labels correctement associés
+              <span class="fr-badge fr-badge--success">Formulaire accessible - Conforme RGAA</span>
             </h3>
           </div>
 
           <div class="fr-callout fr-my-3w">
             <p class="fr-callout__text">
-              <strong>Amélioration :</strong> Ajout de l'attribut <code>for</code> sur les labels
-              et <code>required</code> sur les champs. Mais les erreurs restent indiquées uniquement par la couleur.
+              <strong>Version accessible :</strong> Utilisation complète des composants DSFR avec
+              tous les attributs ARIA nécessaires. Cette version respecte toutes les bonnes pratiques d'accessibilité.
             </p>
           </div>
 
-          <form id="form-v2" class="fr-my-4w">
+          <form id="form-good" class="fr-my-4w">
             <fieldset class="fr-fieldset">
               <legend class="fr-fieldset__legend">
                 Formulaire de contact
               </legend>
-
-              <!-- Labels AVEC for -->
-              <div class="fr-fieldset__element">
-                <label class="fr-label" for="v2-nom">Nom</label>
-                <input class="fr-input" type="text" id="v2-nom" name="nom" required>
-              </div>
-
-              <div class="fr-fieldset__element">
-                <label class="fr-label" for="v2-email">Email</label>
-                <input class="fr-input" type="email" id="v2-email" name="email" required>
-              </div>
-
-              <button type="button" id="btnSubmitV2" class="fr-btn fr-btn--primary">
-                Envoyer
-              </button>
-            </fieldset>
-          </form>
-
-          <details class="fr-mt-4w">
-            <summary><strong>🔊 Ce que vocalise un lecteur d'écran</strong></summary>
-            <div class="fr-callout fr-mt-2w">
-              <p class="fr-text--sm fr-mb-1w"><strong>À l'arrivée sur le champ :</strong></p>
-              <p class="fr-text--sm" style="font-family: monospace; background: #f6f6f6; padding: 0.5rem; border-radius: 0.25rem;">
-                "Nom, requis, champ de saisie vide"
-              </p>
-              <p class="fr-text--sm fr-mb-1w fr-mt-3w"><strong>Après soumission avec champ vide :</strong></p>
-              <p class="fr-text--sm" style="font-family: monospace; background: #f6f6f6; padding: 0.5rem; border-radius: 0.25rem;">
-                [Silence - aucune erreur annoncée, juste la bordure rouge]
-              </p>
-              <p class="fr-text--sm fr-mt-2w fr-mb-0">
-                ✅ Le label est maintenant vocalisé<br>
-                ❌ Mais l'erreur reste invisible pour les lecteurs d'écran
-              </p>
-            </div>
-          </details>
-
-          <details class="fr-mt-2w">
-            <summary><strong>⚠️ Ce qui s'est amélioré / Ce qui manque encore</strong></summary>
-            <div class="fr-callout fr-mt-2w">
-              <p><strong>✅ Améliorations :</strong></p>
-              <ul>
-                <li>Labels associés avec <code>for="id"</code></li>
-                <li>Attribut <code>required</code> sur les champs</li>
-                <li>Le lecteur d'écran vocalise le nom du champ et son caractère obligatoire</li>
-              </ul>
-              <p class="fr-mt-3w"><strong>❌ Problèmes restants :</strong></p>
-              <ul class="fr-mb-0">
-                <li>Erreurs toujours indiquées uniquement par la couleur</li>
-                <li>Aucun message d'erreur textuel</li>
-                <li>Pas d'attribut <code>aria-describedby</code> ou <code>aria-invalid</code></li>
-              </ul>
-            </div>
-          </details>
-        </div>
-
-        <!-- VERSION 3 : MESSAGES D'ERREUR -->
-        <div class="form-version-demo fr-my-6w">
-          <div class="version-header">
-            <h3>
-              <span class="fr-badge fr-badge--warning">Version 3 - Partiellement conforme</span>
-              Messages d'erreur textuels ajoutés
-            </h3>
-          </div>
-
-          <div class="fr-callout fr-my-3w">
-            <p class="fr-callout__text">
-              <strong>Amélioration :</strong> Ajout de messages d'erreur textuels reliés aux champs
-              via <code>aria-describedby</code>. L'utilisateur comprend maintenant ce qui ne va pas.
-            </p>
-          </div>
-
-          <form id="form-v3" class="fr-my-4w">
-            <fieldset class="fr-fieldset">
-              <legend class="fr-fieldset__legend">
-                Formulaire de contact
-              </legend>
-
-              <!-- Avec messages d'erreur -->
-              <div class="fr-fieldset__element">
-                <div class="fr-input-group">
-                  <label class="fr-label" for="v3-nom">Nom</label>
-                  <input class="fr-input" type="text" id="v3-nom" name="nom"
-                         required aria-describedby="error-v3-nom">
-                  <p id="error-v3-nom" class="fr-error-text"></p>
-                </div>
-              </div>
-
-              <div class="fr-fieldset__element">
-                <div class="fr-input-group">
-                  <label class="fr-label" for="v3-email">Email</label>
-                  <input class="fr-input" type="email" id="v3-email" name="email"
-                         required aria-describedby="error-v3-email">
-                  <p id="error-v3-email" class="fr-error-text"></p>
-                </div>
-              </div>
-
-              <button type="button" id="btnSubmitV3" class="fr-btn fr-btn--primary">
-                Envoyer
-              </button>
-            </fieldset>
-          </form>
-
-          <details class="fr-mt-4w">
-            <summary><strong>🔊 Ce que vocalise un lecteur d'écran</strong></summary>
-            <div class="fr-callout fr-mt-2w">
-              <p class="fr-text--sm fr-mb-1w"><strong>À l'arrivée sur le champ :</strong></p>
-              <p class="fr-text--sm" style="font-family: monospace; background: #f6f6f6; padding: 0.5rem; border-radius: 0.25rem;">
-                "Nom, requis, champ de saisie vide"
-              </p>
-              <p class="fr-text--sm fr-mb-1w fr-mt-3w"><strong>Après soumission avec champ vide :</strong></p>
-              <p class="fr-text--sm" style="font-family: monospace; background: #f6f6f6; padding: 0.5rem; border-radius: 0.25rem;">
-                "Nom, requis, Le champ Nom est obligatoire, champ de saisie vide"
-              </p>
-              <p class="fr-text--sm fr-mt-2w fr-mb-0">
-                ✅ Le message d'erreur est maintenant vocalisé grâce à <code>aria-describedby</code>
-              </p>
-            </div>
-          </details>
-
-          <details class="fr-mt-2w">
-            <summary><strong>⚠️ Ce qui s'est amélioré / Ce qui manque encore</strong></summary>
-            <div class="fr-callout fr-mt-2w">
-              <p><strong>✅ Améliorations :</strong></p>
-              <ul>
-                <li>Messages d'erreur textuels (pas uniquement couleur)</li>
-                <li>Attribut <code>aria-describedby</code> reliant le champ au message d'erreur</li>
-                <li>Le lecteur d'écran vocalise le message d'erreur</li>
-                <li>Classes DSFR <code>fr-error-text</code> et <code>fr-input-group--error</code></li>
-              </ul>
-              <p class="fr-mt-3w"><strong>❌ Problèmes restants :</strong></p>
-              <ul class="fr-mb-0">
-                <li>Pas d'attribut <code>aria-invalid</code> pour indiquer l'état de validation</li>
-                <li>Pas d'indicateur visuel supplémentaire (icône) pour renforcer le message</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-
-        <!-- VERSION 4 : COMPLÈTE (DSFR) -->
-        <div class="form-version-demo fr-my-6w">
-          <div class="version-header">
-            <h3>
-              <span class="fr-badge fr-badge--success">Version 4 - Conforme RGAA</span>
-              Formulaire complètement accessible (DSFR)
-            </h3>
-          </div>
-
-          <div class="fr-callout fr-my-3w">
-            <p class="fr-callout__text">
-              <strong>Version finale :</strong> Ajout de <code>aria-invalid</code> et utilisation
-              complète des composants DSFR avec textes d'aide (<code>fr-hint-text</code>).
-              Cette version respecte toutes les bonnes pratiques d'accessibilité.
-            </p>
-          </div>
-
-          <form id="form-v4" class="fr-my-4w">
-            <fieldset class="fr-fieldset">
-              <legend class="fr-fieldset__legend">
-                Vous avez une question ? Veuillez remplir ce formulaire.
-              </legend>
-
-              <!-- Champ Prénom -->
-              <div class="fr-fieldset__element">
-                <div class="fr-input-group">
-                  <label class="fr-label" for="txtPrenom">
-                    Votre prénom
-                    <span class="fr-hint-text">Prénom usuel</span>
-                  </label>
-                  <input class="fr-input" type="text" id="txtPrenom" name="prenom"
-                         required aria-required="true" aria-describedby="error-prenom">
-                  <p id="error-prenom" class="fr-error-text"></p>
-                </div>
-              </div>
 
               <!-- Champ Nom -->
               <div class="fr-fieldset__element">
                 <div class="fr-input-group">
-                  <label class="fr-label" for="txtNom">
-                    Votre nom
-                    <span class="fr-hint-text">Nom de famille</span>
+                  <label class="fr-label" for="good-nom">
+                    Nom <span class="field-required">*</span>
+                    <span class="fr-hint-text">Votre nom de famille</span>
                   </label>
-                  <input class="fr-input" type="text" id="txtNom" name="nom"
-                         required aria-required="true" aria-describedby="error-nom">
-                  <p id="error-nom" class="fr-error-text"></p>
+                  <input class="fr-input" type="text" id="good-nom" name="nom"
+                         required aria-required="true" aria-describedby="error-good-nom">
+                  <p id="error-good-nom" class="fr-error-text"></p>
                 </div>
               </div>
 
               <!-- Champ Email -->
               <div class="fr-fieldset__element">
                 <div class="fr-input-group">
-                  <label class="fr-label" for="txtMail">
-                    Votre email
+                  <label class="fr-label" for="good-email">
+                    Email <span class="field-required">*</span>
                     <span class="fr-hint-text">Format : nom@domaine.fr</span>
                   </label>
-                  <input class="fr-input" type="email" id="txtMail" name="email"
-                         required aria-required="true" aria-describedby="error-email">
-                  <p id="error-email" class="fr-error-text"></p>
+                  <input class="fr-input" type="email" id="good-email" name="email"
+                         required aria-required="true" aria-describedby="error-good-email">
+                  <p id="error-good-email" class="fr-error-text"></p>
                 </div>
               </div>
 
-              <!-- Champ Message -->
-              <div class="fr-fieldset__element">
-                <div class="fr-input-group">
-                  <label class="fr-label" for="txtMessage">
-                    Votre message
-                    <span class="fr-hint-text">Décrivez votre question ou demande</span>
-                  </label>
-                  <textarea class="fr-input" id="txtMessage" name="message" rows="5"
-                            required aria-required="true" aria-describedby="error-message"></textarea>
-                  <p id="error-message" class="fr-error-text"></p>
-                </div>
-              </div>
-
-              <button type="button" id="btnSubmit" class="fr-btn fr-btn--primary">
-                Envoyer votre message
+              <button type="button" id="btnSubmitGood" class="fr-btn fr-btn--primary">
+                Envoyer le formulaire
               </button>
             </fieldset>
           </form>
@@ -391,11 +207,11 @@
             <div class="fr-callout fr-mt-2w">
               <p class="fr-text--sm fr-mb-1w"><strong>À l'arrivée sur le champ :</strong></p>
               <p class="fr-text--sm" style="font-family: monospace; background: #f6f6f6; padding: 0.5rem; border-radius: 0.25rem;">
-                "Votre prénom, Prénom usuel, requis, champ de saisie vide"
+                "Nom, astérisque, Votre nom de famille, requis, champ de saisie vide"
               </p>
               <p class="fr-text--sm fr-mb-1w fr-mt-3w"><strong>Après soumission avec champ vide (focus revient sur le champ) :</strong></p>
               <p class="fr-text--sm" style="font-family: monospace; background: #f6f6f6; padding: 0.5rem; border-radius: 0.25rem;">
-                "Votre prénom, invalide, Le champ Votre prénom est obligatoire, Prénom usuel, requis, champ de saisie vide"
+                "Nom, invalide, Le champ Nom est obligatoire, astérisque, Votre nom de famille, requis, champ de saisie vide"
               </p>
               <p class="fr-text--sm fr-mt-2w fr-mb-0">
                 ✅ Toutes les informations sont vocalisées : label, texte d'aide, état obligatoire,
@@ -405,79 +221,93 @@
           </details>
 
           <details class="fr-mt-2w">
-            <summary><strong>✅ Ce qui est maintenant parfait</strong></summary>
+            <summary><strong>✅ Toutes les bonnes pratiques</strong></summary>
             <div class="fr-callout fr-mt-2w">
               <ul class="fr-mb-0">
-                <li>Labels associés avec <code>for="id"</code></li>
-                <li>Textes d'aide avec <code>fr-hint-text</code> pour guider la saisie</li>
-                <li>Attributs <code>required</code> et <code>aria-required="true"</code></li>
-                <li>Messages d'erreur reliés avec <code>aria-describedby</code></li>
-                <li>État de validation avec <code>aria-invalid="true/false"</code></li>
-                <li>Classes DSFR pour le style : <code>fr-input--error</code>, <code>fr-input-group--error</code></li>
-                <li>Focus automatique sur le premier champ en erreur</li>
-                <li>Bouton explicite : "Envoyer votre message"</li>
-                <li>Composants officiels DSFR garantissant l'accessibilité</li>
+                <li>✅ Labels <strong>associés</strong> avec <code>for</code> et <code>id</code></li>
+                <li>✅ Indicateur visuel <code>*</code> pour les <strong>champs obligatoires</strong></li>
+                <li>✅ Textes d'aide avec <code>fr-hint-text</code> pour guider la saisie</li>
+                <li>✅ Attributs <code>required</code> et <code>aria-required="true"</code></li>
+                <li>✅ Messages d'erreur textuels reliés avec <code>aria-describedby</code></li>
+                <li>✅ État de validation avec <code>aria-invalid="true/false"</code></li>
+                <li>✅ Classes DSFR : <code>fr-input--error</code>, <code>fr-input-group--error</code></li>
+                <li>✅ <strong>Focus automatique</strong> sur le premier champ en erreur</li>
+                <li>✅ Validation de l'<strong>email</strong> avec regex et message personnalisé</li>
+                <li>✅ <strong>Alert notification</strong> pour indiquer l'état du formulaire</li>
+                <li>✅ Bouton explicite : <strong>"Envoyer le formulaire"</strong></li>
+                <li>✅ Composants officiels DSFR <strong>garantissant l'accessibilité</strong></li>
               </ul>
             </div>
           </details>
         </div>
 
         <!-- ========== TABLEAU COMPARATIF ========== -->
-        <h2 class="fr-mt-6w">Tableau comparatif des 4 versions</h2>
+        <h2 class="fr-mt-6w">Tableau comparatif des 2 versions</h2>
 
         <div class="fr-table fr-table--bordered fr-my-4w">
           <table>
             <thead>
               <tr>
                 <th scope="col">Fonctionnalité</th>
-                <th scope="col">V1</th>
-                <th scope="col">V2</th>
-                <th scope="col">V3</th>
-                <th scope="col">V4</th>
+                <th scope="col">❌ Version inaccessible</th>
+                <th scope="col">✅ Version accessible</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>Labels avec <code>for</code></td>
-                <td>❌</td>
-                <td>✅</td>
-                <td>✅</td>
-                <td>✅</td>
+                <td>❌ Non</td>
+                <td>✅ Oui</td>
+              </tr>
+              <tr>
+                <td>Indicateur de champ obligatoire (<code>*</code>)</td>
+                <td>❌ Non</td>
+                <td>✅ Oui</td>
               </tr>
               <tr>
                 <td>Messages d'erreur textuels</td>
-                <td>❌</td>
-                <td>❌</td>
-                <td>✅</td>
-                <td>✅</td>
+                <td>❌ Non (uniquement bordure rouge)</td>
+                <td>✅ Oui, messages clairs</td>
               </tr>
               <tr>
                 <td><code>aria-describedby</code></td>
-                <td>❌</td>
-                <td>❌</td>
-                <td>✅</td>
-                <td>✅</td>
+                <td>❌ Non</td>
+                <td>✅ Oui</td>
               </tr>
               <tr>
                 <td><code>aria-invalid</code></td>
-                <td>❌</td>
-                <td>❌</td>
-                <td>❌</td>
-                <td>✅</td>
+                <td>❌ Non</td>
+                <td>✅ Oui (true/false)</td>
+              </tr>
+              <tr>
+                <td><code>aria-required</code></td>
+                <td>❌ Non</td>
+                <td>✅ Oui</td>
               </tr>
               <tr>
                 <td>Textes d'aide (<code>hint-text</code>)</td>
-                <td>❌</td>
-                <td>❌</td>
-                <td>❌</td>
-                <td>✅</td>
+                <td>❌ Non</td>
+                <td>✅ Oui</td>
+              </tr>
+              <tr>
+                <td>Focus sur erreur</td>
+                <td>❌ Non</td>
+                <td>✅ Oui, premier champ invalide</td>
+              </tr>
+              <tr>
+                <td>Validation email</td>
+                <td>❌ Non</td>
+                <td>✅ Oui, avec message personnalisé</td>
+              </tr>
+              <tr>
+                <td>Alert notification</td>
+                <td>❌ Non</td>
+                <td>✅ Oui (success/error)</td>
               </tr>
               <tr>
                 <td>Lecteur d'écran compatible</td>
-                <td>❌</td>
-                <td>⚠️</td>
-                <td>⚠️</td>
-                <td>✅</td>
+                <td>❌ Non compatible</td>
+                <td>✅ Totalement compatible</td>
               </tr>
             </tbody>
           </table>
@@ -487,7 +317,7 @@
         <h2 class="fr-mt-6w">Testez par vous-même</h2>
 
         <p>
-          Maintenant que vous avez vu les 4 versions, voici des exercices pratiques pour tester
+          Maintenant que vous avez vu les 2 versions, voici des exercices pratiques pour tester
           l'accessibilité des formulaires :
         </p>
 
@@ -495,7 +325,7 @@
         <div class="fr-callout fr-my-4w">
           <h3 class="fr-callout__title">Exercice 1 : Navigation au clavier</h3>
           <p>
-            Testez les versions 1 et 4 en utilisant <strong>uniquement le clavier</strong> :
+            Testez les 2 versions en utilisant <strong>uniquement le clavier</strong> :
           </p>
           <ul>
             <li><kbd>Tab</kbd> : passer au champ suivant</li>
@@ -516,7 +346,7 @@
         <div class="fr-callout fr-my-4w">
           <h3 class="fr-callout__title">Exercice 2 : Inspection avec DevTools</h3>
           <p>
-            Ouvrez l'inspecteur de votre navigateur (<kbd>F12</kbd>) et inspectez les champs des différentes versions :
+            Ouvrez l'inspecteur de votre navigateur (<kbd>F12</kbd>) et inspectez les champs des 2 versions :
           </p>
           <p><strong>Vérifiez :</strong></p>
           <ul class="fr-mb-0">
@@ -539,7 +369,7 @@
                 <a href="https://www.deque.com/axe/browser-extensions/" class="fr-link" target="_blank" rel="noopener noreferrer">
                   Axe DevTools
                 </a>
-              </strong> : analysez les 4 versions et comparez le nombre d'erreurs détectées
+              </strong> : analysez les 2 versions et comparez le nombre d'erreurs détectées
             </li>
             <li>
               <strong>
@@ -550,8 +380,8 @@
             </li>
           </ul>
           <p class="fr-mb-0">
-            <strong>Attendu :</strong> La version 1 devrait avoir plusieurs erreurs,
-            la version 4 ne devrait en avoir aucune.
+            <strong>Attendu :</strong> Le formulaire inaccessible devrait avoir plusieurs erreurs,
+            le formulaire accessible ne devrait en avoir aucune.
           </p>
         </div>
 
@@ -615,39 +445,8 @@
           ou <code>aria-labelledby</code> / <code>aria-label</code>.
         </p>
 
-        <!-- Thématique 2 : Regroupements -->
-        <h3 class="fr-mt-5w">2. Regroupements de champs</h3>
-
-        <div class="fr-callout fr-my-3w">
-          <h4 class="fr-callout__title">Critère 11.5 - Regroupement nécessaire</h4>
-          <p class="fr-callout__text fr-mb-0">
-            Dans chaque formulaire, les champs de même nature sont-ils regroupés, si nécessaire ?
-          </p>
-        </div>
-
-        <div class="fr-callout fr-my-3w">
-          <h4 class="fr-callout__title">Critère 11.6 - Présence de légende</h4>
-          <p class="fr-callout__text fr-mb-0">
-            Dans chaque formulaire, chaque regroupement de champs de même nature a-t-il une légende ?
-          </p>
-        </div>
-
-        <div class="fr-callout fr-my-3w">
-          <h4 class="fr-callout__title">Critère 11.7 - Pertinence de la légende</h4>
-          <p class="fr-callout__text fr-mb-0">
-            Dans chaque formulaire, chaque légende associée à un regroupement de champs de même nature
-            est-elle pertinente ?
-          </p>
-        </div>
-
-        <p class="fr-text--sm">
-          💡 Utilisez <code>&lt;fieldset&gt;</code> et <code>&lt;legend&gt;</code> pour regrouper
-          les champs de même nature (boutons radio, cases à cocher, sections d'un formulaire).
-          Cela aide les utilisateurs de lecteurs d'écran à comprendre la structure du formulaire.
-        </p>
-
-        <!-- Thématique 3 : Boutons -->
-        <h3 class="fr-mt-5w">3. Intitulés des boutons</h3>
+        <!-- Thématique 2 : Boutons -->
+        <h3 class="fr-mt-5w">2. Intitulés des boutons</h3>
 
         <div class="fr-callout fr-my-3w">
           <h4 class="fr-callout__title">Critère 11.9 - Pertinence des boutons</h4>
@@ -662,8 +461,8 @@
           "Envoyer le formulaire", "Valider votre inscription", etc.
         </p>
 
-        <!-- Thématique 4 : Messages d'erreur -->
-        <h3 class="fr-mt-5w">4. Gestion des erreurs</h3>
+        <!-- Thématique 3 : Messages d'erreur -->
+        <h3 class="fr-mt-5w">3. Gestion des erreurs</h3>
 
         <div class="fr-callout fr-my-3w">
           <h4 class="fr-callout__title">Critère 11.10 - Identification des erreurs</h4>
@@ -685,57 +484,32 @@
           Le message doit être clair et proposer une solution (ex: "Format attendu : nom@domaine.fr").
         </p>
 
-        <!-- ========== SECTION 4 : EXEMPLES DE CODE PROGRESSIFS ========== -->
-        <h2 class="fr-mt-6w">Évolution du code : de la V1 à la V4</h2>
+        <!-- ========== SECTION 4 : EXEMPLE DE CODE ========== -->
+        <h2 class="fr-mt-6w">Comparaison du code HTML</h2>
 
-        <p>
-          Voici comment le code HTML évolue à travers les 4 versions :
-        </p>
-
-        <h3 class="fr-mt-4w">❌ Version 1 : Uniquement couleur (non conforme)</h3>
+        <h3 class="fr-mt-4w">❌ Version inaccessible (à ne PAS faire)</h3>
         <div class="fr-callout">
           <pre><code>&lt;label&gt;Nom&lt;/label&gt;
-&lt;input type="text" id="nom" class="error-border"&gt;</code></pre>
+&lt;input type="text" id="nom"&gt;</code></pre>
           <p class="fr-text--sm fr-mb-0">
-            Pas d'association label/champ, pas de message d'erreur, pas d'ARIA.
+            Pas d'association label/champ, pas de message d'erreur, pas d'ARIA, pas d'indicateur *.
           </p>
         </div>
 
-        <h3 class="fr-mt-4w">⚠️ Version 2 : Labels associés (partiellement conforme)</h3>
+        <h3 class="fr-mt-4w">✅ Version accessible (à faire)</h3>
         <div class="fr-callout">
-          <pre><code>&lt;label for="nom"&gt;Nom&lt;/label&gt;
-&lt;input type="text" id="nom" required class="error-border"&gt;</code></pre>
-          <p class="fr-text--sm fr-mb-0">
-            Ajout de <code>for</code> et <code>required</code>, mais erreurs toujours par couleur uniquement.
-          </p>
-        </div>
-
-        <h3 class="fr-mt-4w">⚠️ Version 3 : Messages d'erreur (partiellement conforme)</h3>
-        <div class="fr-callout">
-          <pre><code>&lt;label for="nom"&gt;Nom&lt;/label&gt;
-&lt;input type="text" id="nom" required aria-describedby="error-nom"&gt;
-&lt;p id="error-nom" class="fr-error-text"&gt;Le champ Nom est obligatoire&lt;/p&gt;</code></pre>
-          <p class="fr-text--sm fr-mb-0">
-            Ajout du message d'erreur relié via <code>aria-describedby</code>, mais manque <code>aria-invalid</code>.
-          </p>
-        </div>
-
-        <h3 class="fr-mt-4w">✅ Version 4 : Complète DSFR (conforme)</h3>
-        <div class="fr-callout">
-          <pre><code>&lt;div class="fr-fieldset__element"&gt;
-  &lt;div class="fr-input-group"&gt;
-    &lt;label class="fr-label" for="nom"&gt;
-      Nom
-      &lt;span class="fr-hint-text"&gt;Nom de famille&lt;/span&gt;
-    &lt;/label&gt;
-    &lt;input class="fr-input" type="text" id="nom"
-           required aria-required="true" aria-invalid="false"
-           aria-describedby="error-nom"&gt;
-    &lt;p id="error-nom" class="fr-error-text"&gt;&lt;/p&gt;
-  &lt;/div&gt;
+          <pre><code>&lt;div class="fr-input-group"&gt;
+  &lt;label class="fr-label" for="nom"&gt;
+    Nom &lt;span class="field-required"&gt;*&lt;/span&gt;
+    &lt;span class="fr-hint-text"&gt;Votre nom de famille&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;input class="fr-input" type="text" id="nom"
+         required aria-required="true" aria-invalid="false"
+         aria-describedby="error-nom"&gt;
+  &lt;p id="error-nom" class="fr-error-text"&gt;&lt;/p&gt;
 &lt;/div&gt;</code></pre>
           <p class="fr-text--sm fr-mb-0">
-            Composants DSFR complets avec texte d'aide, <code>aria-invalid</code>, et structure accessible.
+            Composants DSFR complets : association label/input, indicateur *, texte d'aide, tous les attributs ARIA.
           </p>
         </div>
 
@@ -778,10 +552,7 @@
             ✅ <strong>Toujours associer un label à chaque champ</strong> via <code>for</code> et <code>id</code>
           </li>
           <li>
-            ✅ <strong>Marquer les champs obligatoires</strong> avec <code>required</code> et <code>aria-required="true"</code>
-          </li>
-          <li>
-            ✅ <strong>Regrouper les champs de même nature</strong> avec <code>&lt;fieldset&gt;</code> et <code>&lt;legend&gt;</code>
+            ✅ <strong>Marquer les champs obligatoires</strong> avec <code>*</code>, <code>required</code> et <code>aria-required="true"</code>
           </li>
           <li>
             ✅ <strong>Relier les messages d'erreur aux champs</strong> via <code>aria-describedby</code>
