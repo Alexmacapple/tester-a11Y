@@ -1,0 +1,435 @@
+<div class="les-images">
+  <div class="fr-container fr-py-6w">
+
+    <!-- ========== FIL D'ARIANE ========== -->
+    <nav role="navigation" class="fr-breadcrumb" aria-label="vous êtes ici :">
+      <button class="fr-breadcrumb__button" aria-expanded="false" aria-controls="breadcrumb-images">
+        Voir le fil d'Ariane
+      </button>
+      <div class="fr-collapse" id="breadcrumb-images">
+        <ol class="fr-breadcrumb__list">
+          <li>
+            <a class="fr-breadcrumb__link" href="/tester-a11y/">Accueil</a>
+          </li>
+          <li>
+            <a class="fr-breadcrumb__link" aria-current="page">Testons les images</a>
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <div class="fr-grid-row fr-grid-row--center">
+      <div class="fr-col-12 fr-col-md-8">
+
+        <!-- ========== TITRE + QUESTION ========== -->
+        <h1>Testons les images</h1>
+
+        <div class="fr-callout fr-my-4w">
+          <p class="fr-callout__text">
+            Est-ce que les images de ce site sont accessibles pour les personnes aveugles ou malvoyantes ?
+          </p>
+        </div>
+
+        <!-- ========== SECTION 1 : INTRODUCTION ========== -->
+        <h2>Fournir une alternative aux images porteuses d'information</h2>
+
+        <p>
+          Les personnes aveugles ou malvoyantes utilisent des outils de lecture, de vocalisation
+          et d'agrandissement de contenus pour naviguer sur le web.
+        </p>
+
+        <h3>Impact sur les utilisateurs</h3>
+
+        <p>
+          L'absence (ou le manque de pertinence) d'alternative aux images porteuses d'information
+          peuvent <strong>empêcher ces personnes de comprendre un contenu ou d'accomplir une tâche</strong>.
+        </p>
+
+        <p>
+          Une image sans alternative textuelle (attribut <code>alt</code>) ou avec une alternative
+          non pertinente (comme le nom du fichier "image1.png") est totalement inaccessible pour
+          les utilisateurs de lecteurs d'écran.
+        </p>
+
+        <div class="fr-alert fr-alert--info fr-my-4w">
+          <h4 class="fr-alert__title">
+            L'attribut alt n'est pas qu'une question d'accessibilité : il améliore aussi le SEO et s'affiche quand l'image ne se charge pas !
+          </h4>
+        </div>
+
+        <!-- ========== SECTION 2 : TESTER - COMPARAISON AVANT/APRÈS ========== -->
+        <h2 class="fr-mt-6w">Exemples : avant / après</h2>
+
+        <!-- Exemple 1 : Image décorative -->
+        <h3 class="fr-mt-5w">1. Image décorative</h3>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">
+            <span class="fr-badge fr-badge--error">Non conforme</span>
+            Image décorative avec nom de fichier
+          </h4>
+          <pre><code>&lt;img src="decoration.png" alt="decoration.png"&gt;</code></pre>
+          <p class="fr-text--sm fr-mb-0">
+            ❌ Le lecteur d'écran annonce "decoration point png", ce qui n'apporte aucune information utile
+            et pollue la navigation.
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">
+            <span class="fr-badge fr-badge--success">Conforme</span>
+            Image décorative masquée
+          </h4>
+          <pre><code>&lt;img src="decoration.png" alt=""&gt;</code></pre>
+          <p class="fr-text--sm fr-mb-0">
+            ✅ L'attribut <code>alt</code> vide indique que l'image est purement décorative.
+            Le lecteur d'écran l'ignore complètement.
+          </p>
+        </div>
+
+        <!-- Exemple 2 : Image informative simple -->
+        <h3 class="fr-mt-5w">2. Image informative simple</h3>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">
+            <span class="fr-badge fr-badge--error">Non conforme</span>
+            Image sans alternative
+          </h4>
+          <pre><code>&lt;img src="logo-entreprise.png"&gt;</code></pre>
+          <p class="fr-text--sm fr-mb-0">
+            ❌ Absence totale d'attribut <code>alt</code>. Le lecteur d'écran annonce le nom du fichier
+            ou simplement "image", sans aucun contexte.
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">
+            <span class="fr-badge fr-badge--success">Conforme</span>
+            Image avec alternative pertinente
+          </h4>
+          <pre><code>&lt;img src="logo-entreprise.png" alt="Logo de l'entreprise Acme"&gt;</code></pre>
+          <p class="fr-text--sm fr-mb-0">
+            ✅ L'alternative décrit le contenu de l'image de manière concise et pertinente.
+            L'utilisateur comprend immédiatement ce que représente l'image.
+          </p>
+        </div>
+
+        <!-- Exemple 3 : Image complexe -->
+        <h3 class="fr-mt-5w">3. Image complexe (graphique, schéma)</h3>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">
+            <span class="fr-badge fr-badge--error">Non conforme</span>
+            Alternative incomplète pour image complexe
+          </h4>
+          <pre><code>&lt;img src="graphique-ventes.png" alt="Graphique"&gt;</code></pre>
+          <p class="fr-text--sm fr-mb-0">
+            ❌ L'alternative ne transmet pas l'information véhiculée par le graphique.
+            L'utilisateur ne connaît pas les données représentées.
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">
+            <span class="fr-badge fr-badge--success">Conforme</span>
+            Image avec description détaillée
+          </h4>
+          <pre><code>&lt;img src="graphique-ventes.png"
+     alt="Évolution des ventes 2024"
+     aria-describedby="desc-graphique"&gt;
+
+&lt;p id="desc-graphique"&gt;
+  Graphique en courbe montrant l'évolution des ventes
+  de janvier à décembre 2024. Les ventes sont passées
+  de 10 000€ en janvier à 45 000€ en décembre,
+  avec une hausse progressive tout au long de l'année.
+&lt;/p&gt;</code></pre>
+          <p class="fr-text--sm fr-mb-0">
+            ✅ L'attribut <code>alt</code> donne le titre du graphique, et
+            <code>aria-describedby</code> relie l'image à une description détaillée
+            qui transmet toute l'information véhiculée.
+          </p>
+        </div>
+
+        <!-- Exemple 4 : Image-texte -->
+        <h3 class="fr-mt-5w">4. Image contenant du texte</h3>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">
+            <span class="fr-badge fr-badge--error">Non conforme</span>
+            Texte en image non reproduit
+          </h4>
+          <pre><code>&lt;img src="citation-motivation.png" alt="Citation inspirante"&gt;</code></pre>
+          <p class="fr-text--sm fr-mb-0">
+            ❌ Le texte présent dans l'image n'est pas reproduit dans l'alternative.
+            Les personnes malvoyantes ne peuvent pas agrandir le texte ou modifier les contrastes.
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">
+            <span class="fr-badge fr-badge--success">Conforme</span>
+            Texte stylé en HTML
+          </h4>
+          <pre><code>&lt;blockquote class="citation-style"&gt;
+  &lt;p&gt;
+    « L'accessibilité n'est pas une contrainte,
+    c'est une opportunité. »
+  &lt;/p&gt;
+  &lt;footer&gt;— Tim Berners-Lee&lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+          <p class="fr-text--sm fr-mb-0">
+            ✅ Le texte est en HTML et peut être agrandi, stylé avec des feuilles de styles personnalisées,
+            ou lu par un lecteur d'écran. Préférez toujours du texte HTML stylé à du texte en image.
+          </p>
+        </div>
+
+        <!-- ========== SECTION 3 : BONNES PRATIQUES (9 CRITÈRES RGAA) ========== -->
+        <h2 class="fr-mt-6w">Bonnes pratiques et critères RGAA</h2>
+
+        <p>
+          Le Référentiel Général d'Amélioration de l'Accessibilité (RGAA) définit 9 critères
+          concernant les images. Voici les bonnes pratiques associées :
+        </p>
+
+        <!-- Thématique 1 : Alternatives textuelles -->
+        <h3 class="fr-mt-5w">Fournir une alternative textuelle aux images porteuses d'information</h3>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">Critère 1.1</h4>
+          <p class="fr-callout__text fr-mb-0">
+            Chaque image porteuse d'information a-t-elle une alternative textuelle ?
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">Critère 1.3</h4>
+          <p class="fr-callout__text fr-mb-0">
+            Pour chaque image porteuse d'information ayant une alternative textuelle,
+            cette alternative est-elle pertinente (hors cas particuliers) ?
+          </p>
+        </div>
+
+        <p class="fr-text--sm">
+          💡 Une alternative est pertinente si elle transmet la même information que l'image.
+          Elle doit être concise (évitez "image de..." ou "photo de...") et décrire
+          l'intention visuelle ou l'émotion véhiculée.
+        </p>
+
+        <!-- Thématique 2 : Images décoratives -->
+        <h3 class="fr-mt-5w">Masquer les images décoratives aux technologies d'assistance</h3>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">Critère 1.2</h4>
+          <p class="fr-callout__text fr-mb-0">
+            Chaque image de décoration est-elle correctement ignorée par les technologies d'assistance ?
+          </p>
+        </div>
+
+        <p class="fr-text--sm">
+          💡 En l'absence d'alternative vide (<code>alt=""</code>) ou d'attribut permettant de masquer
+          l'élément aux technologies d'assistance (<code>aria-hidden="true"</code>), les images de décoration
+          risquent d'être annoncées et de rendre le contenu peu compréhensible.
+        </p>
+
+        <!-- Thématique 3 : CAPTCHA -->
+        <h3 class="fr-mt-5w">Renseigner la nature et fournir un accès alternatif aux images CAPTCHA</h3>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">Critère 1.4</h4>
+          <p class="fr-callout__text fr-mb-0">
+            Pour chaque image utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle,
+            cette alternative permet-elle d'identifier la nature et la fonction de l'image ?
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">Critère 1.5</h4>
+          <p class="fr-callout__text fr-mb-0">
+            Pour chaque image utilisée comme CAPTCHA, une solution d'accès alternatif au contenu
+            ou à la fonction du CAPTCHA est-elle présente ?
+          </p>
+        </div>
+
+        <p class="fr-text--sm">
+          💡 L'absence d'alternative à une image CAPTCHA empêche les personnes aveugles ou malvoyantes
+          de connaître la nature de l'image. Les personnes déficientes mentales ou cognitives peuvent
+          ne pas comprendre un CAPTCHA visuel ou logique. Proposez toujours une solution alternative
+          (CAPTCHA audio, question logique simple, etc.).
+        </p>
+
+        <!-- Thématique 4 : Descriptions détaillées -->
+        <h3 class="fr-mt-5w">Implémenter une description détaillée pour les images complexes</h3>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">Critère 1.6</h4>
+          <p class="fr-callout__text fr-mb-0">
+            Chaque image porteuse d'information a-t-elle, si nécessaire, une description détaillée ?
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">Critère 1.7</h4>
+          <p class="fr-callout__text fr-mb-0">
+            Pour chaque image porteuse d'information ayant une description détaillée,
+            cette description est-elle pertinente ?
+          </p>
+        </div>
+
+        <p class="fr-text--sm">
+          💡 Les images complexes (graphiques, schémas, cartes) nécessitent une description détaillée
+          accessible via <code>aria-describedby</code> ou un lien adjacent. L'absence de description
+          détaillée empêche les personnes aveugles ou malvoyantes de comprendre l'information véhiculée.
+        </p>
+
+        <!-- Thématique 5 : Images-texte -->
+        <h3 class="fr-mt-5w">Remplacer les images-textes par du texte stylé</h3>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">Critère 1.8</h4>
+          <p class="fr-callout__text fr-mb-0">
+            Chaque image texte porteuse d'information, en l'absence d'un mécanisme de remplacement,
+            doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée
+            (hors cas particuliers) ?
+          </p>
+        </div>
+
+        <p class="fr-text--sm">
+          💡 Les personnes malvoyantes peuvent rencontrer des difficultés à lire des textes en image
+          car elles ne peuvent pas les rendre plus lisibles : agrandir les caractères ou améliorer les contrastes.
+          Les personnes présentant des troubles de la lecture (comme la dyslexie) peuvent utiliser des feuilles
+          de styles personnalisées et des lecteurs vocaux pour simplifier la lecture.
+        </p>
+
+        <!-- Thématique 6 : Légendes -->
+        <h3 class="fr-mt-5w">Associer correctement une légende à son image</h3>
+
+        <div class="fr-callout fr-my-3w">
+          <h4 class="fr-callout__title">Critère 1.9</h4>
+          <p class="fr-callout__text fr-mb-0">
+            Chaque légende d'image est-elle, si nécessaire, correctement reliée à l'image correspondante ?
+          </p>
+        </div>
+
+        <p class="fr-text--sm">
+          💡 Une image et sa légende sont associées visuellement par un style particulier.
+          Les personnes aveugles ou malvoyantes peuvent ne pas comprendre le lien entre l'image et sa légende
+          si cette association n'est pas annoncée via <code>&lt;figure&gt;</code> et <code>&lt;figcaption&gt;</code>.
+          Elles peuvent penser que la légende (le copyright, la date de publication ou le nom de l'auteur)
+          est liée à un autre contenu.
+        </p>
+
+        <!-- ========== SECTION 4 : COMMENT CORRIGER ========== -->
+        <h2 class="fr-mt-6w">Comment corriger ?</h2>
+
+        <h3>Exemples de code HTML correct</h3>
+
+        <p><strong>1. Image porteuse d'information :</strong></p>
+        <div class="fr-callout">
+          <pre><code>&lt;img src="photo-equipe.jpg" alt="L'équipe de développement réunie lors du lancement du projet"&gt;</code></pre>
+        </div>
+
+        <p class="fr-mt-3w"><strong>2. Image décorative :</strong></p>
+        <div class="fr-callout">
+          <pre><code>&lt;img src="separateur.png" alt=""&gt;</code></pre>
+        </div>
+
+        <p class="fr-mt-3w"><strong>3. Image avec légende :</strong></p>
+        <div class="fr-callout">
+          <pre><code>&lt;figure&gt;
+  &lt;img src="monument.jpg" alt="La Tour Eiffel illuminée de nuit"&gt;
+  &lt;figcaption&gt;Photo prise en décembre 2024 par Marie Dupont&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+        </div>
+
+        <p class="fr-mt-3w"><strong>4. Image complexe avec description détaillée :</strong></p>
+        <div class="fr-callout">
+          <pre><code>&lt;img src="organigramme.png"
+     alt="Organigramme de l'entreprise"
+     aria-describedby="desc-organigramme"&gt;
+
+&lt;div id="desc-organigramme"&gt;
+  &lt;p&gt;Description détaillée de l'organigramme :&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Direction générale : 1 personne&lt;/li&gt;
+    &lt;li&gt;Direction technique : 5 personnes&lt;/li&gt;
+    &lt;li&gt;Direction commerciale : 3 personnes&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <h3 class="fr-mt-5w">Outils de vérification</h3>
+
+        <ul>
+          <li>
+            <a href="https://www.deque.com/axe/browser-extensions/" class="fr-link" target="_blank" rel="noopener noreferrer">
+              Axe DevTools
+            </a>
+            - Extension navigateur pour détecter les images sans alternative
+          </li>
+          <li>
+            <a href="https://wave.webaim.org/extension/" class="fr-link" target="_blank" rel="noopener noreferrer">
+              WAVE Browser Extension
+            </a>
+            - Visualisation des alternatives textuelles
+          </li>
+          <li>
+            <strong>Inspecteur du navigateur</strong> - Vérifiez la présence et le contenu de l'attribut <code>alt</code>
+          </li>
+          <li>
+            <strong>Lecteur d'écran</strong> - Testez avec NVDA (Windows) ou VoiceOver (Mac) pour entendre ce qui est vocalisé
+          </li>
+        </ul>
+
+        <h3 class="fr-mt-5w">Bonnes pratiques à retenir</h3>
+
+        <ul>
+          <li>
+            <strong>Image décorative ?</strong> Utilisez <code>alt=""</code> (vide, pas d'espace)
+          </li>
+          <li>
+            <strong>Image informative ?</strong> Décrivez le contenu de manière concise et pertinente
+          </li>
+          <li>
+            <strong>Ne mettez jamais</strong> le nom du fichier comme alternative (<code>alt="image1.png"</code>)
+          </li>
+          <li>
+            <strong>Évitez les redondances</strong> comme "image de..." ou "photo de..."
+            (sauf si le type d'image est important)
+          </li>
+          <li>
+            <strong>Transmettez l'intention</strong> : l'alternative doit véhiculer la même information
+            que l'image, y compris l'émotion ou le contexte
+          </li>
+          <li>
+            <strong>Image complexe ?</strong> Fournissez une description détaillée via
+            <code>aria-describedby</code> ou un texte adjacent
+          </li>
+          <li>
+            <strong>Texte en image ?</strong> Préférez du texte HTML stylé avec CSS
+          </li>
+          <li>
+            <strong>Image avec légende ?</strong> Utilisez <code>&lt;figure&gt;</code> et <code>&lt;figcaption&gt;</code>
+          </li>
+        </ul>
+
+        <div class="fr-alert fr-alert--info fr-my-4w">
+          <h3 class="fr-alert__title">Astuce pro</h3>
+          <p>
+            L'attribut <code>alt</code> est utile pour :
+          </p>
+          <ul>
+            <li><strong>L'accessibilité</strong> - permet aux lecteurs d'écran de vocaliser l'information</li>
+            <li><strong>Le SEO</strong> - améliore le référencement de vos images sur les moteurs de recherche</li>
+            <li><strong>La robustesse</strong> - s'affiche quand l'image ne se charge pas (connexion lente, erreur serveur)</li>
+          </ul>
+          <p class="fr-mb-0">
+            En résumé : <code>alt=""</code> si décoratif, sinon une description concise et pertinente.
+            Jamais le nom du fichier !
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+.footer {
+  padding: 1em 0;
+
+  border-top: 0.1em solid var(--color-primary);
+  clear: both;
+  position: relative;
+  width: 100%;
+
+  p {
+    margin: 0;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .left {
+    width: 70%;
+    margin-left: 1em;
+  }
+
+  .right {
+    width: 30%;
+    margin-right: 1em;
+    text-align: right;
+    justify-items: end;
+
+    .logo-shodo {
+      text-align: center;
+
+      p {
+        margin: 0;
+        padding-top: 0.5em;
+      }
+
+      img {
+        margin: auto;
+      }
+
+      .shodo-white {
+        display: none;
+      }
+
+      .shodo-black {
+        display: none;
+      }
+    }
+  }
+
+  a.button {
+    width: 2em;
+    text-decoration: none;
+    border: none;
+
+    i {
+      font-size: 1.5em;
+    }
+  }
+}
+
+html[data-selected-theme='dark'] {
+  .shodo-white {
+    display: block !important;
+  }
+}
+
+html[data-selected-theme='light'] {
+  .shodo-black {
+    display: block !important;
+  }
+}

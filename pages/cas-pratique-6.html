@@ -1,0 +1,156 @@
+<div class="cas-pratique-6">
+  <div class="fr-container fr-py-6w">
+    <!-- Fil d'ariane -->
+    <nav role="navigation" class="fr-breadcrumb" aria-label="vous êtes ici :">
+      <button class="fr-breadcrumb__button" aria-expanded="false" aria-controls="breadcrumb-6">Voir le fil d'Ariane</button>
+      <div class="fr-collapse" id="breadcrumb-6">
+        <ol class="fr-breadcrumb__list">
+          <li>
+            <a class="fr-breadcrumb__link" href="/tester-a11y/">Accueil</a>
+          </li>
+          <li>
+            <a class="fr-breadcrumb__link" aria-current="page">Cas pratique n°6 : les liens</a>
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <div class="fr-grid-row fr-grid-row--center">
+      <div class="fr-col-12 fr-col-md-8">
+
+        <!-- Titre principal -->
+        <h1>Cas pratique n°6 : les liens</h1>
+
+        <!-- Question -->
+        <div class="fr-callout fr-my-4w">
+          <p class="fr-callout__text">
+            Est-ce que ces liens sont accessibles ?
+          </p>
+        </div>
+
+        <!-- Cartes -->
+        <div class="fr-grid-row fr-grid-row--gutters fr-my-4w">
+          <!-- Carte 1: RGAA -->
+          <div class="fr-col-12">
+            <div class="fr-card">
+              <div class="fr-card__body">
+                <div class="fr-card__content">
+                  <h3 class="fr-card__title">
+                    Référentiel général d'amélioration de l'accessibilité (RGAA)
+                  </h3>
+                  <p class="fr-card__desc">
+                    Pour faciliter la mise en accessibilité des sites et services
+                    numériques, la direction interministérielle du numérique (DINUM) édite
+                    le référentiel général d'amélioration de l'accessibilité, dont voici
+                    la quatrième version.
+                  </p>
+                </div>
+              </div>
+              <div class="fr-card__footer">
+                <a href="https://accessibilite.numerique.gouv.fr/" class="fr-link">
+                  En savoir plus
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carte 2: DSFR -->
+          <div class="fr-col-12 fr-mt-3w">
+            <div class="fr-card">
+              <div class="fr-card__body">
+                <div class="fr-card__content">
+                  <h3 class="fr-card__title">Système de Design de l'État</h3>
+                  <p class="fr-card__desc">
+                    Développer vos sites et applications en utilisant des composants prêts
+                    à l'emploi, accessibles et ergonomiques.
+                  </p>
+                  <p>
+                    Ce projet est le volet numérique de la marque de l'État, qui permet
+                    pour les citoyens d'avoir une cohérence graphique et une meilleure
+                    expérience à travers l'ensemble des sites de l'État. Le Système de
+                    Design de l'État regroupe un ensemble de composants réutilisables,
+                    répondant à des standards et à une gouvernance, pouvant être assemblés
+                    pour créer des sites Internet accessibles et ergonomiques
+                  </p>
+                </div>
+              </div>
+              <div class="fr-card__footer">
+                <a href="https://www.systeme-de-design.gouv.fr/" class="fr-link">
+                  En savoir plus
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carte 3: ARA -->
+          <div class="fr-col-12 fr-mt-3w">
+            <div class="fr-card">
+              <div class="fr-card__body">
+                <div class="fr-card__content">
+                  <h3 class="fr-card__title">Réalisez vos audits d'accessibilité numérique</h3>
+                  <p class="fr-card__desc">
+                    Ara nécessite une bonne connaissance de la méthode technique du RGAA.
+                    Basé sur la dernière version du référentiel général d'amélioration de
+                    l'accessibilité (RGAA 4.1) vous pouvez :
+                  </p>
+                  <ul>
+                    <li>Faire un état des lieux (audit partiel de 25 ou 50 critères)</li>
+                    <li>Faire un audit complet, dit de conformité (106 critères)</li>
+                    <li>
+                      Générer votre rapport d'audit et votre déclaration d'accessibilité
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="fr-card__footer">
+                <a href="https://ara.numerique.gouv.fr/" class="fr-link">
+                  En savoir plus
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bouton utilisant onclick - Intentionnellement mauvaise pratique pour démonstration -->
+        <!-- IMPORTANT: Utilisation d'un bouton au lieu d'un lien est volontaire pour illustrer le problème -->
+        <div class="fr-my-6w" style="text-align: center">
+          <button
+            class="fr-btn"
+            style="width: 100%"
+            onclick="javascript:window.open('https://www.w3.org/WAI/standards-guidelines/wcag/fr', 'blank')"
+          >
+            Consulter les règles pour l'accessibilité des contenus Web (WCAG)
+          </button>
+        </div>
+
+        <!-- Astuce -->
+        <div class="fr-alert fr-alert--info fr-my-4w">
+          <h3 class="fr-alert__title">Astuce</h3>
+          <p>Un bouton n'est pas un lien et un lien n'est pas un bouton.</p>
+          <ul>
+            <li>Un bouton <strong>fait quelque chose</strong>.</li>
+            <li>Un lien <strong>va quelque part</strong>.</li>
+          </ul>
+          <p>Si un lien ouvre une nouvelle fenêtre, le préciser.</p>
+        </div>
+
+        <p class="fr-text--sm">
+          Explication :
+          <a
+            href="https://karlgroves.com/links-are-not-buttons-neither-are-divs-and-spans/"
+            class="fr-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span lang="en">Links are not buttons. Neither are DIVs and SPANs</span>
+          </a>
+          - <span lang="en">Karl Groves</span>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
