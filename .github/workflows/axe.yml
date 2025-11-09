@@ -1,0 +1,33 @@
+name: Accessibility Tests with Axe
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  axe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm run build --if-present
+          npm install -g @axe-core/cli@4.x.x
+
+      - name: Run axe
+        run: |
+          axe https://emma11y.github.io/tester-a11y/
+          axe https://emma11y.github.io/tester-a11y/les-contrastes
+          axe https://emma11y.github.io/tester-a11y/la-langue
+          axe https://emma11y.github.io/tester-a11y/les-images
+          axe https://emma11y.github.io/tester-a11y/les-formulaires
+          axe https://emma11y.github.io/tester-a11y/cas-pratique-5
+          axe https://emma11y.github.io/tester-a11y/cas-pratique-6

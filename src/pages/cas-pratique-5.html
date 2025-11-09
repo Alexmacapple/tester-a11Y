@@ -1,0 +1,61 @@
+<div class="cas-pratique-5">
+  <div class="fr-container fr-py-6w">
+    <!-- Fil d'ariane -->
+    <nav role="navigation" class="fr-breadcrumb" aria-label="vous êtes ici :">
+      <button class="fr-breadcrumb__button" aria-expanded="false" aria-controls="breadcrumb-5">Voir le fil d'Ariane</button>
+      <div class="fr-collapse" id="breadcrumb-5">
+        <ol class="fr-breadcrumb__list">
+          <li>
+            <a class="fr-breadcrumb__link" href="/tester-a11y/">Accueil</a>
+          </li>
+          <li>
+            <a class="fr-breadcrumb__link" aria-current="page">Cas pratique n°5 : les boutons</a>
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <div class="fr-grid-row fr-grid-row--center">
+      <div class="fr-col-12 fr-col-md-8">
+
+        <!-- Titre principal -->
+        <h1>Cas pratique n°5 : les boutons</h1>
+
+        <!-- Question -->
+        <div class="fr-callout fr-my-4w">
+          <p class="fr-callout__text">
+            Est-ce que ces boutons sont accessibles ?
+          </p>
+        </div>
+
+        <!-- Boutons - Intentionnellement sans labels accessibles pour démonstration -->
+        <!-- IMPORTANT: Les boutons sans texte accessible sont volontaires pour illustrer le problème -->
+        <fieldset class="fr-fieldset fr-my-4w">
+          <legend class="fr-fieldset__legend">
+            Veuillez choisir votre moyen de paiement :
+          </legend>
+          <div class="buttons fr-btns-group">
+            <button type="button" class="fr-btn fr-btn--secondary">
+              <i class="fa-brands fa-cc-visa" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="fr-btn fr-btn--secondary">
+              <i class="fa-brands fa-cc-mastercard" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="fr-btn fr-btn--secondary">
+              <i class="fa-brands fa-cc-paypal" aria-hidden="true"></i>
+            </button>
+          </div>
+        </fieldset>
+
+        <p class="fr-text--sm" style="margin-top: 5em">
+          Source :
+          <a href="https://www.lalutineduweb.fr/boutons-accessibles-html/" class="fr-link" target="_blank" rel="noopener noreferrer">
+            Créer des boutons accessibles et dignes de ce nom en HTML
+          </a>
+          - La Lutine du Web
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>

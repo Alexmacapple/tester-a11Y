@@ -1,0 +1,28 @@
+{
+  "ci": {
+    "collect": {
+      "url": [
+        "https://emma11y.github.io/tester-a11y/",
+        "https://emma11y.github.io/tester-a11y/les-contrastes",
+        "https://emma11y.github.io/tester-a11y/la-langue",
+        "https://emma11y.github.io/tester-a11y/les-images",
+        "https://emma11y.github.io/tester-a11y/les-formulaires",
+        "https://emma11y.github.io/tester-a11y/cas-pratique-5",
+        "https://emma11y.github.io/tester-a11y/cas-pratique-6"
+      ],
+      "startServerCommand": "npm run dev",
+      "settings": {
+        "onlyAudits": ["accessibility"],
+        "onlyCategories": ["accessibility"]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    },
+    "assertions": {
+      "assertions": {
+        "categories:accessibility": ["error", { "minScore": 1 }]
+      }
+    }
+  }
+}

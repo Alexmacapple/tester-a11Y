@@ -1,0 +1,209 @@
+<div class="cas-pratique-1">
+  <div class="fr-container fr-py-6w">
+    <!-- Fil d'ariane -->
+    <nav role="navigation" class="fr-breadcrumb" aria-label="vous êtes ici :">
+      <button class="fr-breadcrumb__button" aria-expanded="false" aria-controls="breadcrumb-1">Voir le fil d'Ariane</button>
+      <div class="fr-collapse" id="breadcrumb-1">
+        <ol class="fr-breadcrumb__list">
+          <li>
+            <a class="fr-breadcrumb__link" href="/tester-a11y/">Accueil</a>
+          </li>
+          <li>
+            <a class="fr-breadcrumb__link" aria-current="page">Testons les contrastes</a>
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <div class="fr-grid-row fr-grid-row--center">
+      <div class="fr-col-12 fr-col-md-8">
+
+        <!-- IMPORTANT: Cette page a volontairement des contrastes non-conformes pour démonstration pédagogique -->
+
+        <!-- Titre principal -->
+        <h1>Testons les contrastes</h1>
+
+        <!-- Question -->
+        <div class="fr-callout fr-my-4w">
+          <p class="fr-callout__text">
+            Est-ce que les contrastes sont respectés sur ce site ?
+          </p>
+        </div>
+
+        <!-- ========== SECTION 1: INTRODUCTION & IMPACT UTILISATEURS ========== -->
+
+        <!-- Introduction -->
+        <h2>Appliquer des contrastes suffisamment élevés</h2>
+        <p>
+          L'utilisation de contrastes trop faibles diminue considérablement la lisibilité des contenus.
+        </p>
+
+        <!-- Impact utilisateurs -->
+        <h3>Impact sur les utilisateurs</h3>
+        <p>
+          Dans ce cas, les personnes malvoyantes ne perçoivent pas certains textes,
+          composants d'interface ou éléments graphiques.
+        </p>
+        <p>
+          Elles sont alors <strong>incapables de lire le contenu ou d'interagir avec les éléments concernés</strong>.
+        </p>
+
+        <!-- Message clé -->
+        <div class="fr-alert fr-alert--info fr-my-4w">
+          <h4 class="fr-alert__title">Le contraste : ce n'est pas juste de l'esthétique. C'est de l'accessibilité.</h4>
+        </div>
+
+        <!-- ========== SECTION 2: EXEMPLES ========== -->
+
+        <h2 class="fr-mt-6w">Exemples de contrastes non conformes</h2>
+
+        <!-- Exemple 1: Texte normal -->
+        <div class="fr-callout fr-my-3w bad-contrast-demo">
+          <h3 class="fr-callout__title">
+            <span class="fr-badge fr-badge--error">Non conforme</span>
+            Texte normal - Ratio requis : 4,5:1
+          </h3>
+          <p class="fr-callout__text">
+            Texte avec contraste insuffisant rendant la lecture difficile pour
+            les personnes malvoyantes ou daltoniennes. Ce texte a un contraste de seulement 1,6:1
+            (très loin des 4,5:1 requis).
+          </p>
+        </div>
+
+        <!-- Exemple 2: Grand texte -->
+        <div class="fr-callout fr-my-3w bad-contrast-demo">
+          <h3 class="fr-callout__title">
+            <span class="fr-badge fr-badge--error">Non conforme</span>
+            Grand texte - Ratio requis : 3:1
+          </h3>
+          <p class="fr-callout__text large-text">
+            Ce grand texte a un contraste de 1,6:1 (insuffisant pour les 3:1 requis).
+          </p>
+          <p class="fr-text--sm fr-mb-0">
+            Les textes de grande taille (≥ 18pt ou ≥ 14pt gras) nécessitent un ratio de 3:1 minimum.
+          </p>
+        </div>
+
+        <!-- Exemple 3: Éléments UI -->
+        <div class="fr-callout fr-my-3w bad-contrast-demo">
+          <h3 class="fr-callout__title">
+            <span class="fr-badge fr-badge--error">Non conforme</span>
+            Éléments d'interface - Ratio requis : 3:1
+          </h3>
+          <p class="fr-callout__text">
+            Les pictogrammes, icônes informatives et composants graphiques doivent
+            avoir un ratio minimum de 3:1 avec l'arrière-plan pour être perceptibles.
+          </p>
+          <div class="fr-mt-3w" style="font-size: 2rem; display: flex; gap: 1rem; align-items: center;">
+            <i class="fa-solid fa-circle-info" aria-hidden="true" style="color: #999999;"></i>
+            <i class="fa-solid fa-triangle-exclamation" aria-hidden="true" style="color: #aaaaaa;"></i>
+            <i class="fa-solid fa-circle-check" aria-hidden="true" style="color: #999999;"></i>
+            <i class="fa-solid fa-circle-xmark" aria-hidden="true" style="color: #aaaaaa;"></i>
+          </div>
+          <p class="fr-text--sm fr-mt-2w fr-mb-0">
+            Ces pictogrammes ont un contraste d'environ 2,5:1 (insuffisant pour les 3:1 requis) et sont difficiles à percevoir.
+          </p>
+        </div>
+
+        <!-- ========== SECTION 3: RATIOS DE CONTRASTE ========== -->
+
+        <h2 class="fr-mt-6w">Les ratios de contraste à respecter</h2>
+
+        <!-- Tableau des ratios -->
+        <div class="fr-table fr-my-4w">
+          <table>
+            <caption>Ratios de contraste requis selon les WCAG 2.1 niveau AA</caption>
+            <thead>
+              <tr>
+                <th scope="col">Type d'élément</th>
+                <th scope="col">Caractéristiques</th>
+                <th scope="col">Ratio minimum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Texte normal</strong></td>
+                <td>&lt; 18 pt ou &lt; 14 pt gras</td>
+                <td><strong>4,5:1</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Grand texte</strong></td>
+                <td>≥ 18 pt ou ≥ 14 pt gras</td>
+                <td><strong>3:1</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Éléments UI</strong></td>
+                <td>Composants d'interface, icônes informatives</td>
+                <td><strong>3:1</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ========== SECTION 4: CRITÈRES RGAA ========== -->
+
+        <h2 class="fr-mt-6w">Critères RGAA associés</h2>
+
+        <div class="fr-callout fr-my-3w">
+          <h3 class="fr-callout__title">Critère 3.2</h3>
+          <p class="fr-callout__text fr-mb-0">
+            Dans chaque page web, le contraste entre la couleur du texte et la couleur
+            de son arrière-plan est-il suffisamment élevé (hors cas particuliers) ?
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h3 class="fr-callout__title">Critère 3.3</h3>
+          <p class="fr-callout__text fr-mb-0">
+            Dans chaque page web, les couleurs utilisées dans les composants d'interface
+            ou les éléments graphiques porteurs d'informations sont-elles suffisamment
+            contrastées (hors cas particuliers) ?
+          </p>
+        </div>
+
+        <!-- ========== SECTION 5: SOLUTIONS + OUTILS ========== -->
+
+        <h2 class="fr-mt-6w">Comment vérifier vos contrastes ?</h2>
+
+        <!-- Outils -->
+        <h3>Outils de vérification</h3>
+        <ul>
+          <li>
+            <a href="https://www.tpgi.com/color-contrast-checker/"
+               class="fr-link"
+               target="_blank"
+               rel="noopener noreferrer">
+              Color Contrast Analyzer (CCA) - TPGi
+            </a>
+          </li>
+          <li>
+            <a href="https://app.contrast-finder.org"
+               class="fr-link"
+               target="_blank"
+               rel="noopener noreferrer">
+              Contrast Finder - Tanaguru
+            </a>
+          </li>
+          <li>
+            <a href="https://dequeuniversity.com/color-contrast"
+               class="fr-link"
+               target="_blank"
+               rel="noopener noreferrer">
+              Analyseur de contraste de couleur - Deque University
+            </a>
+          </li>
+        </ul>
+
+        <!-- Astuce finale -->
+        <div class="fr-alert fr-alert--info fr-my-4w">
+          <h3 class="fr-alert__title">Astuce</h3>
+          <p class="fr-mb-0">
+            Utilisez des générateurs de palettes pour obtenir des couleurs valides proches
+            de vos couleurs actuelles et maintenir votre identité visuelle.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

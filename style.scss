@@ -1,0 +1,602 @@
+@import url('./src/components/header/header.scss');
+@import url('./src/components/footer/footer.scss');
+
+/* Webfont: Luciole-Regular */
+@font-face {
+  font-family: 'Luciole';
+  src: url('./src/assets/fonts/Luciole/Luciole-Regular/Luciole-Regular.eot'); /* IE9 Compat Modes */
+  src: url('./src/assets/fonts/Luciole/Luciole-Regular/Luciole-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */
+      url('./src/assets/fonts/Luciole/Luciole-Regular/Luciole-Regular.woff')
+      format('woff'),
+    /* Modern Browsers */
+      url('./src/assets/fonts/Luciole/Luciole-Regular/Luciole-Regular.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('./src/assets/fonts/Luciole/Luciole-Regular/Luciole-Regular.svg#Luciole-Regular')
+      format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Luciole';
+  src: url('./src/assets/fonts/Luciole/Luciole-Bold/Luciole-Bold.eot'); /* IE9 Compat Modes */
+  src: url('./src/assets/fonts/Luciole/Luciole-Bold/Luciole-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */
+      url('./src/assets/fonts/Luciole/Luciole-Bold/Luciole-Bold.woff')
+      format('woff'),
+    /* Modern Browsers */
+      url('./src/assets/fonts/Luciole/Luciole-Bold/Luciole-Bold.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('./src/assets/fonts/Luciole/Luciole-Bold/Luciole-Bold.svg#Luciole-Bold')
+      format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Luciole';
+  src: url('./src/assets/fonts/Luciole/Luciole-Italic/Luciole-Italic.eot'); /* IE9 Compat Modes */
+  src: url('./src/assets/fonts/Luciole/Luciole-Italic/Luciole-Italic.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */
+      url('./src/assets/fonts/Luciole/Luciole-Italic/Luciole-Italic.woff')
+      format('woff'),
+    /* Modern Browsers */
+      url('./src/assets/fonts/Luciole/Luciole-Italic/Luciole-Italic.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('./src/assets/fonts/Luciole/Luciole-Italic/Luciole-Italic.svg#Luciole-Italic')
+      format('svg'); /* Legacy iOS */
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Luciole';
+  src: url('./src/assets/fonts/Luciole/Luciole-BoldItalic/Luciole-BoldItalic.eot'); /* IE9 Compat Modes */
+  src: url('./src/assets/fonts/Luciole/Luciole-BoldItalic/Luciole-BoldItalic.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */
+      url('./src/assets/fonts/Luciole/Luciole-BoldItalic/Luciole-BoldItalic.woff')
+      format('woff'),
+    /* Modern Browsers */
+      url('./src/assets/fonts/Luciole/Luciole-BoldItalic/Luciole-BoldItalic.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('./src/assets/fonts/Luciole/Luciole-BoldItalic/Luciole-BoldItalic.svg#Luciole-BoldItalic')
+      format('svg'); /* Legacy iOS */
+  font-style: italic;
+  font-weight: 700;
+}
+
+:root {
+  --main-family: 'Luciole', Helvetica, Arial, sans-serif;
+  --color-white: #fafafa;
+}
+
+:root,
+[data-selected-theme='dark'] {
+  --bg-color: #222;
+  --color: #fafafa;
+  --color-primary: #89c4f4;
+  --color-secondary: #f29292;
+  --color-red: #ff3b3b;
+  --color-green: #199e11;
+}
+
+[data-selected-theme='light'] {
+  --bg-color: #fafafa;
+  --color: #333329;
+  --color-primary: #2653a6;
+  --color-secondary: #d33b3b;
+  --color-red: #d33b3b;
+  --color-green: #1c8615;
+}
+
+// Classe pour appliquer de mauvais contrastes uniquement aux exemples de démonstration
+.bad-contrast-demo {
+  // Mode clair : texte gris clair sur fond clair (ratio ~1,6:1)
+  .fr-callout__title,
+  .fr-callout__text,
+  p {
+    color: #c8c8c8 !important;
+  }
+
+  // Style pour le grand texte (≥ 18pt ou ≥ 14pt gras)
+  .large-text {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+}
+
+// Mode sombre : texte gris foncé sur fond sombre
+[data-selected-theme='dark'] .bad-contrast-demo {
+  .fr-callout__title,
+  .fr-callout__text,
+  p {
+    color: #323232 !important;
+  }
+}
+
+// Mauvais contraste pour les titres principaux de la page cas-pratique-1
+// Appliqué uniquement sur H1 et H2 pour garder les H3 lisibles (titres structurels)
+.cas-pratique-1 {
+  h1,
+  h2 {
+    color: #c8c8c8 !important; // Mode clair : ratio ~1,6:1
+  }
+}
+
+[data-selected-theme='dark'] .cas-pratique-1 {
+  h1,
+  h2 {
+    color: #323232 !important; // Mode sombre
+  }
+}
+
+html {
+  font-family: var(--main-family);
+  background-color: var(--bg-color);
+  color: var(--color);
+  min-height: 100vh;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+  width: 100%;
+  font-size: 20px;
+}
+
+* {
+  outline: none;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+
+  /* fallback height */
+  min-height: 100vh;
+
+  /* new small viewport height for modern browsers */
+  min-height: 100svh;
+}
+
+.content {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 5em;
+
+  // @media screen and (max-width: 1200px) {
+  padding: 0 2em;
+  // }
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+// Styles DSFR natifs pour les titres
+// h1, h2, h3, h4, h5, h6 utilisent les styles DSFR par défaut
+
+p {
+  line-height: 1.5;
+  color: var(--color);
+}
+
+// Styles DSFR natifs pour les listes
+// ul, li utilisent les styles DSFR par défaut
+
+// Styles pour le code
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f6f6f6;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  color: #161616;
+}
+
+[data-selected-theme='dark'] code {
+  background-color: #2a2a2a;
+  color: #f6f6f6;
+}
+
+// Blocs de code
+pre {
+  background-color: #f6f6f6;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  overflow-x: auto;
+  margin: 0;
+
+  code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+}
+
+[data-selected-theme='dark'] pre {
+  background-color: #2a2a2a;
+}
+
+// Code dans les callouts
+.fr-callout {
+  pre {
+    background-color: transparent;
+  }
+}
+
+a.button,
+button {
+  background-color: var(--bg-color);
+  border: 0.1rem solid var(--color-primary);
+  color: var(--color-primary);
+  cursor: pointer;
+  width: 10em;
+  padding: 0.5em 1em;
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  font-family: var(--main-family);
+  font-size: 1em;
+
+  //&:focus-visible,
+  &:hover {
+    color: var(--bg-color);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+}
+
+a.button {
+  text-decoration: none;
+}
+
+// Styles DSFR natifs pour les liens
+// a, a.fr-link utilisent les styles DSFR par défaut
+
+// li utilise le style DSFR par défaut
+
+.text {
+  &-center {
+    text-align: center;
+  }
+}
+
+.font {
+  &-bold {
+    font-weight: bold;
+  }
+}
+
+.mt {
+  &-2 {
+    margin-top: 2em;
+  }
+  &-3 {
+    margin-top: 3em;
+  }
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1em;
+  border: none;
+
+  legend {
+    margin-bottom: 2em;
+    color: var(--color);
+  }
+}
+
+.astuce,
+.remarque {
+  display: flex;
+  flex-direction: row;
+
+  .light,
+  .danger {
+    text-align: left;
+    align-content: center;
+    margin-right: 2em;
+  }
+
+  .fa-lightbulb {
+    font-size: 2em;
+    color: var(--color-secondary);
+  }
+
+  .fa-triangle-exclamation {
+    font-size: 2em;
+    color: var(--color-red);
+  }
+
+  li {
+    margin: 0;
+  }
+}
+
+.les-images {
+  .images {
+    display: flex;
+    flex-direction: row;
+
+    @media screen and (max-width: 699px) {
+      flex-direction: column;
+    }
+
+    &.hidden {
+      left: -9999px;
+      position: absolute;
+    }
+
+    .image {
+      margin: auto;
+      width: 50%;
+      flex: 50%;
+      padding: 1em;
+
+      @media screen and (max-width: 699px) {
+        width: 90%;
+        flex: 90%;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .actions {
+    button {
+      width: 15em;
+      margin: 1em auto;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Les formulaires utilisent les composants DSFR natifs
+// Pas besoin de styles custom supplémentaires
+.les-formulaires {
+  // Tous les styles sont gérés par les classes DSFR :
+  // - fr-input-group pour les groupes de champs
+  // - fr-input pour les inputs
+  // - fr-input--error pour les états d'erreur
+  // - fr-error-text pour les messages d'erreur
+  // - fr-label pour les labels
+  // - fr-fieldset et fr-fieldset__legend pour les regroupements
+}
+
+.cas-pratique-5 {
+  .buttons {
+    display: flex;
+
+    @media screen and (max-width: 699px) {
+      flex-direction: column;
+      justify-self: center;
+    }
+
+    button {
+      margin: 0 0.5em;
+      border-radius: 0.5em;
+
+      @media screen and (max-width: 699px) {
+        margin-left: 0;
+        margin-bottom: 0.5em;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    i {
+      font-size: 2em;
+    }
+  }
+
+  .astuce {
+    margin-top: 3em;
+  }
+}
+
+.cas-pratique-6 {
+  .cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+
+    .card {
+      width: 33%;
+      flex: 33%;
+
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      @media screen and (max-width: 1199px) {
+        width: 100%;
+        flex: 100%;
+        margin-bottom: 2em;
+      }
+
+      &-body {
+        padding: 1em;
+      }
+
+      &-footer {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      a {
+        text-decoration: none;
+        border: 0.1em solid var(--color-primary);
+        border-radius: 0.5em;
+        padding: 1em;
+
+        //&:focus-visible,
+        &:hover {
+          background-color: var(--color-primary);
+          color: var(--bg-color);
+        }
+      }
+    }
+  }
+}
+
+.a-propos {
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    @media screen and (max-width: 699px) {
+      flex-direction: column;
+    }
+  }
+
+  .avatar {
+    border-radius: 50%;
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+
+    @media screen and (max-width: 699px) {
+      width: 15rem;
+      height: 15rem;
+    }
+  }
+
+  .reseaux-sociaux {
+    margin-top: 2em;
+    ul {
+      list-style: none;
+      display: flex;
+      margin: auto;
+      padding: 0;
+      flex-direction: column;
+
+      li {
+        margin-bottom: 1em;
+
+        i {
+          vertical-align: middle;
+          font-size: 1.5em;
+          color: var(--color-primary);
+          width: 1.5em;
+          text-align: center;
+
+          &.fa-link {
+            font-size: 1.8em;
+          }
+        }
+      }
+    }
+  }
+
+  .logo-shodo {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      margin: 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .wrap-shodo {
+      padding: 0.5em 1em;
+      background-color: var(--color-red);
+    }
+
+    .wrap-logo {
+      background-color: var(--color-red);
+      color: var(--bg-color);
+      text-align: center;
+    }
+
+    p {
+      color: var(--color-white);
+      margin: 0;
+    }
+
+    .brand {
+      text-transform: uppercase;
+      width: 9em;
+      padding-left: 1em;
+
+      span {
+        display: flex;
+      }
+    }
+  }
+}
+
+.faq {
+  &-reponse {
+    border: 0.1em solid var(--color);
+    padding: 2em;
+  }
+}
+
+.thanks {
+  margin: auto;
+  text-align: center;
+
+  p:first-child {
+    font-size: 180%;
+  }
+
+  .qr-codes {
+    display: flex;
+    flex-direction: row;
+    margin: auto 1em;
+    justify-content: center;
+
+    @media screen and (max-width: 659px) {
+      flex-flow: wrap;
+    }
+
+    div {
+      margin: 0 1em;
+
+      img {
+        width: 15vw;
+
+        @media screen and (max-width: 659px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

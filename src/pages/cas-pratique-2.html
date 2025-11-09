@@ -1,0 +1,240 @@
+<div class="cas-pratique-2">
+  <div class="fr-container fr-py-6w">
+    <!-- Fil d'ariane -->
+    <nav role="navigation" class="fr-breadcrumb" aria-label="vous êtes ici :">
+      <button class="fr-breadcrumb__button" aria-expanded="false" aria-controls="breadcrumb-2">Voir le fil d'Ariane</button>
+      <div class="fr-collapse" id="breadcrumb-2">
+        <ol class="fr-breadcrumb__list">
+          <li>
+            <a class="fr-breadcrumb__link" href="/tester-a11y/">Accueil</a>
+          </li>
+          <li>
+            <a class="fr-breadcrumb__link" aria-current="page">Testons la langue</a>
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <div class="fr-grid-row fr-grid-row--center">
+      <div class="fr-col-12 fr-col-md-8">
+
+        <!-- Titre principal -->
+        <h1>Testons la langue</h1>
+
+        <!-- Question -->
+        <div class="fr-callout fr-my-4w">
+          <p class="fr-callout__text">
+            Est-ce que ce site est vocalisable dans la bonne langue ?
+          </p>
+        </div>
+
+        <!-- ========== SECTION 1: INTRODUCTION & IMPACT UTILISATEURS ========== -->
+
+        <!-- Introduction -->
+        <h2>Identification de langue principale et des changements de langue</h2>
+        <p>
+          L'identification de la langue principale d'une page web et des changements de langue dans le contenu
+          est essentielle pour permettre aux technologies d'assistance de restituer correctement les textes.
+        </p>
+
+        <!-- Impact utilisateurs -->
+        <h3>Impact sur les utilisateurs</h3>
+        <p>
+          Certaines personnes présentant des troubles de la lecture (comme la dyslexie ou l'illettrisme)
+          utilisent des lecteurs vocaux qui peuvent être moins efficaces si les changements de langue ne sont pas indiqués.
+        </p>
+        <p>
+          Les personnes aveugles ou malvoyantes qui utilisent un lecteur d'écran peuvent rencontrer d'importantes
+          difficultés à comprendre les textes lus dans une langue qui n'est pas la bonne.
+          <strong>Sans indication de langue, le lecteur d'écran utilisera sa langue par défaut</strong>,
+          rendant le contenu incompréhensible.
+        </p>
+
+        <!-- Message clé -->
+        <div class="fr-alert fr-alert--info fr-my-4w">
+          <h4 class="fr-alert__title">Sans langue, ou avec une mauvaise indication de langue, pas de lecture accessible</h4>
+        </div>
+
+        <!-- ========== SECTION 2: EXEMPLES ========== -->
+
+        <h2 class="fr-mt-6w">Exemples de problèmes de langue</h2>
+
+        <!-- Exemple 1: Texte anglais sans attribut lang -->
+        <div class="fr-callout fr-my-3w">
+          <h3 class="fr-callout__title">
+            <span class="fr-badge fr-badge--error">Non conforme</span>
+            Texte en anglais sans attribut lang
+          </h3>
+          <p class="fr-callout__text">
+            This text is in English but does not have a lang attribute.
+            A French screen reader will try to read it with French pronunciation,
+            making it completely unintelligible for users.
+          </p>
+          <p class="fr-text--sm fr-mb-0">
+            Ce texte en anglais n'a pas d'attribut <code>lang="en"</code> et sera lu avec une prononciation française
+            par les lecteurs d'écran configurés en français.
+          </p>
+        </div>
+
+        <!-- Exemple 2: Changement de langue non signalé -->
+        <div class="fr-callout fr-my-3w">
+          <h3 class="fr-callout__title">
+            <span class="fr-badge fr-badge--error">Non conforme</span>
+            Changement de langue non signalé
+          </h3>
+          <p class="fr-callout__text">
+            Ce paragraphe commence en français, puis intègre une citation en anglais :
+            "The quick brown fox jumps over the lazy dog" sans indiquer le changement de langue.
+            Le lecteur d'écran continuera à lire en français.
+          </p>
+          <p class="fr-text--sm fr-mb-0">
+            Les mots ou expressions en langue étrangère doivent être signalés avec l'attribut <code>lang</code>
+            approprié, par exemple : <code>&lt;span lang="en"&gt;Hello&lt;/span&gt;</code>
+          </p>
+        </div>
+
+        <!-- Exemple 3: Texte en anglais AVEC attribut lang correct -->
+        <div class="fr-callout fr-my-3w">
+          <h3 class="fr-callout__title">
+            <span class="fr-badge fr-badge--success">Conforme</span>
+            Texte en anglais avec attribut lang correct
+          </h3>
+          <p class="fr-callout__text" lang="en">
+            This text is in English and has the correct lang="en" attribute.
+            A French screen reader will now read it with English pronunciation,
+            making it perfectly understandable for users.
+          </p>
+          <p class="fr-text--sm fr-mb-0">
+            Ce texte en anglais possède l'attribut <code>lang="en"</code> correct
+            et sera lu avec la bonne prononciation anglaise par les lecteurs d'écran.
+          </p>
+        </div>
+
+        <!-- ========== SECTION 3: CRITÈRES RGAA ========== -->
+
+        <h2 class="fr-mt-6w">Critères RGAA associés</h2>
+
+        <div class="fr-callout fr-my-3w">
+          <h3 class="fr-callout__title">Critère 8.3</h3>
+          <p class="fr-callout__text fr-mb-0">
+            Dans chaque page web, la langue par défaut est-elle présente ?
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h3 class="fr-callout__title">Critère 8.4</h3>
+          <p class="fr-callout__text fr-mb-0">
+            Pour chaque page web ayant une langue par défaut, le code de langue est-il pertinent ?
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h3 class="fr-callout__title">Critère 8.7</h3>
+          <p class="fr-callout__text fr-mb-0">
+            Dans chaque page web, chaque changement de langue est-il indiqué dans le code source (hors cas particuliers) ?
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h3 class="fr-callout__title">Critère 8.8</h3>
+          <p class="fr-callout__text fr-mb-0">
+            Dans chaque page web, le code de langue de chaque changement de langue est-il valide et pertinent ?
+          </p>
+        </div>
+
+        <div class="fr-callout fr-my-3w">
+          <h3 class="fr-callout__title">Critère 8.10</h3>
+          <p class="fr-callout__text fr-mb-0">
+            Dans chaque page web, les changements du sens de lecture sont-ils signalés ?
+          </p>
+        </div>
+
+        <!-- ========== SECTION 4: SOLUTIONS ========== -->
+
+        <h2 class="fr-mt-6w">Comment corriger ?</h2>
+
+        <!-- Exemples de code HTML correct -->
+        <h3>Exemples de code HTML correct</h3>
+
+        <p><strong>1. Déclarer la langue principale de la page :</strong></p>
+        <div class="fr-callout">
+          <pre><code>&lt;html lang="fr"&gt;</code></pre>
+        </div>
+
+        <p class="fr-mt-3w"><strong>2. Signaler un changement de langue :</strong></p>
+        <div class="fr-callout">
+          <pre><code>&lt;p&gt;
+  Ce texte est en français, mais cette citation est en anglais :
+  &lt;span lang="en"&gt;Hello world&lt;/span&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <p class="fr-mt-3w"><strong>3. Utiliser les codes ISO 639-1 :</strong></p>
+        <ul>
+          <li><code>lang="fr"</code> pour le français</li>
+          <li><code>lang="en"</code> pour l'anglais</li>
+          <li><code>lang="es"</code> pour l'espagnol</li>
+          <li><code>lang="de"</code> pour l'allemand</li>
+          <li><code>lang="it"</code> pour l'italien</li>
+        </ul>
+
+        <!-- Outils de vérification -->
+        <h3 class="fr-mt-5w">Outils de vérification</h3>
+        <ul>
+          <li>
+            <a href="https://validator.w3.org/"
+               class="fr-link"
+               target="_blank"
+               rel="noopener noreferrer">
+              Validateur HTML du W3C
+            </a>
+            - Détecte l'absence de l'attribut lang
+          </li>
+          <li>
+            <strong>Console du navigateur</strong> -
+            Inspectez l'attribut lang avec les outils de développement du navigateur (F12)
+          </li>
+          <li>
+            <strong>Lecteurs d'écran</strong> (NVDA, JAWS, VoiceOver) -
+            Testez directement avec ces outils pour vérifier la prononciation
+          </li>
+        </ul>
+
+        <!-- Bonnes pratiques -->
+        <h3 class="fr-mt-5w">Bonnes pratiques</h3>
+        <ul>
+          <li>
+            <strong>Toujours déclarer la langue principale</strong> avec l'attribut <code>lang</code>
+            sur la balise <code>&lt;html&gt;</code>
+          </li>
+          <li>
+            <strong>Signaler tous les changements de langue</strong>, même pour un seul mot
+            (nom propre étranger, citation, terme technique)
+          </li>
+          <li>
+            <strong>Utiliser les codes ISO 639-1</strong> (2 lettres) pour identifier les langues.
+            Vous pouvez aussi ajouter la région : <code>lang="fr-FR"</code>, <code>lang="en-US"</code>
+          </li>
+          <li>
+            <strong>Ne pas oublier les contenus dynamiques</strong> : si du contenu est ajouté
+            en JavaScript, pensez à ajouter l'attribut lang si nécessaire
+          </li>
+          <li>
+            <strong>Attention aux citations</strong> : une citation en langue étrangère
+            doit être signalée avec l'attribut lang approprié
+          </li>
+        </ul>
+
+        <!-- Astuce finale -->
+        <div class="fr-alert fr-alert--info fr-my-4w">
+          <h3 class="fr-alert__title">Astuce</h3>
+          <p class="fr-mb-0">
+            Intégrez la déclaration de langue dès le début de votre projet dans vos templates HTML.
+            C'est une correction simple qui a un impact majeur sur l'accessibilité !
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
