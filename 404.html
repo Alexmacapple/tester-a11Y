@@ -1,44 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta http-equiv="refresh" content="0; url='./'" />
-    <title>Erreur 404 - Démo accessibilité numérique</title>
-
-    <link rel="stylesheet" href="style.scss" />
-    <link rel="stylesheet" href="src/assets/fontawesome/all.min.css" />
-  </head>
-  <body>
-    <custom-header></custom-header>
-    <main role="main">
-      <div class="content text-center">
-        <i
-          class="fa-solid fa-triangle-exclamation"
-          aria-hidden="true"
-          style="font-size: 10em; color: var(--color-red)"
-        ></i>
-
-        <h1>Erreur 404</h1>
-
-        <p>
-          Si vous n'êtes pas redirigé automatiquement, retourner sur la page
-          d'<a href="./">Accueil</a>.
-        </p>
-      </div>
-
-      <custom-footer></custom-footer>
-    </main>
-
-    <script type="module" src="index.js" defer></script>
-
-    <!-- fix routing on github pages : https://gist.github.com/leonsilicon/1278d429d7c915a9866bc6ea73453d9a -->
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
     <script>
-      sessionStorage.redirect = location.href;
-      const projectPages = true; // If you're using the base .github.io domain without a path (i.e. <name>.github.io is your home page), set this to false
+      // Single Page Apps for GitHub Pages
+      // Store the path for SPA routing before redirect
+      sessionStorage.redirect = location.pathname + location.search + location.hash;
+
+      // Redirect to index.html with path preserved
+      const projectPages = true;
       const l = window.location;
       const repo = projectPages ? '/' + l.pathname.split('/')[1] : '';
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repo
+
+      // Redirect to root (index.html will handle routing)
+      window.location.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repo + '/'
       );
     </script>
+  </head>
+  <body>
+    <!-- Simple message in case JavaScript is disabled -->
+    <p>Redirection en cours...</p>
   </body>
 </html>

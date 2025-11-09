@@ -27,6 +27,10 @@ export default defineConfig({
           dest: '',
         },
         {
+          src: 'public/.nojekyll',
+          dest: '',
+        },
+        {
           src: 'src/components',
           dest: '',
         },
