@@ -213,11 +213,11 @@ class RouterOutlet extends HTMLElement {
     }
 
     if (path === '/les-formulaires') {
-      // VERSION 1 : Uniquement couleur rouge (non conforme)
-      const btnV1 = document.getElementById('btnSubmitV1');
-      if (btnV1) {
-        btnV1.addEventListener('click', () => {
-          const form = document.getElementById('form-v1');
+      // FORMULAIRE INACCESSIBLE : Uniquement bordure rouge, aucun message, aucun ARIA
+      const btnBad = document.getElementById('btnSubmitBad');
+      if (btnBad) {
+        btnBad.addEventListener('click', () => {
+          const form = document.getElementById('form-bad');
           const inputs = form.querySelectorAll('input');
 
           for (const input of inputs) {
@@ -233,74 +233,16 @@ class RouterOutlet extends HTMLElement {
               input.style.borderWidth = '';
             }
           }
-          // Pas d'alerte, pas de message d'erreur
+          // Pas d'alerte, pas de message d'erreur, pas d'ARIA
         });
       }
 
-      // VERSION 2 : Labels associés mais toujours couleur uniquement
-      const btnV2 = document.getElementById('btnSubmitV2');
-      if (btnV2) {
-        btnV2.addEventListener('click', () => {
-          const form = document.getElementById('form-v2');
+      // FORMULAIRE ACCESSIBLE : Implémentation complète DSFR avec tous les attributs ARIA
+      const btnGood = document.getElementById('btnSubmitGood');
+      if (btnGood) {
+        btnGood.addEventListener('click', () => {
+          const form = document.getElementById('form-good');
           const inputs = form.querySelectorAll('input');
-
-          for (const input of inputs) {
-            const hasValid = input.value.trim() !== '';
-
-            if (!hasValid) {
-              // Uniquement changement de bordure en rouge
-              input.style.borderColor = 'red';
-              input.style.borderWidth = '2px';
-            } else {
-              // Retirer la bordure rouge
-              input.style.borderColor = '';
-              input.style.borderWidth = '';
-            }
-          }
-          // Pas d'alerte, pas de message d'erreur
-        });
-      }
-
-      // VERSION 3 : Messages d'erreur + aria-describedby (sans aria-invalid)
-      const btnV3 = document.getElementById('btnSubmitV3');
-      if (btnV3) {
-        btnV3.addEventListener('click', () => {
-          const form = document.getElementById('form-v3');
-          const inputs = form.querySelectorAll('input');
-
-          for (const input of inputs) {
-            const hasValid = input.value.trim() !== '';
-
-            const inputGroup = input.closest('.fr-input-group');
-            const errorText = inputGroup.querySelector('.fr-error-text');
-            const label = inputGroup.querySelector('.fr-label');
-
-            if (hasValid) {
-              // Champ valide : retirer les erreurs
-              input.classList.remove('fr-input--error');
-              inputGroup.classList.remove('fr-input-group--error');
-              errorText.innerText = '';
-            } else {
-              // Champ invalide : ajouter bordure rouge + message texte
-              input.classList.add('fr-input--error');
-              inputGroup.classList.add('fr-input-group--error');
-
-              // Générer le message d'erreur
-              const labelText = label.textContent.trim();
-              errorText.innerText = `Le champ ${labelText} est obligatoire`;
-
-              // PAS d'aria-invalid dans V3
-            }
-          }
-        });
-      }
-
-      // VERSION 4 : Implémentation complète DSFR (conforme)
-      const btnV4 = document.getElementById('btnSubmit');
-      if (btnV4) {
-        btnV4.addEventListener('click', () => {
-          const form = document.getElementById('form-v4');
-          const inputs = form.querySelectorAll('input, textarea');
 
           let hasSomeInputInvalid = false;
 
@@ -340,9 +282,9 @@ class RouterOutlet extends HTMLElement {
               if (errorMessage) {
                 errorText.innerText = errorMessage;
               } else {
-                // Extraire le texte du label (sans le hint-text)
+                // Extraire le texte du label (sans le hint-text et l'astérisque)
                 const labelText = label.childNodes[0].textContent.trim();
-                errorText.innerText = `Le champ "${labelText}" est obligatoire`;
+                errorText.innerText = `Le champ ${labelText} est obligatoire`;
               }
             }
           }
