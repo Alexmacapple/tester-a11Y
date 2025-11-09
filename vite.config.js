@@ -3,7 +3,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import FullReload from 'vite-plugin-full-reload';
 
 export default defineConfig({
-  base: '/tester-a11Y/', // Nom du repo GitHub (respecter la casse)
+  base: '/tester-a11y/', // Nom du repo GitHub
   plugins: [
     FullReload(
       [
